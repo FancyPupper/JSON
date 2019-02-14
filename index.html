@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Y AJAX</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript">
+		function loadData(){
+			let xhr = new XMLHttpRequest();
+			xhr.open("GET", "https://FancyPupper.github.io/JSON/test.json");
+
+			xhr.onreadystatechange = function(){
+				console.log(this.readyState, this.status, this.statusText);
+			}
+
+			xhr.onload = function(){
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<h1>JSON Y AJAX</h1>
+		<h3>Permitir que AJAX modifique el contenido</h3>
+		<button id="btn"></button>
+	</header>
+</body>
+</html>
