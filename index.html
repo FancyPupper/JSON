@@ -5,16 +5,39 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<script type="text/javascript">
 		function loadData(){
+			//crear una petición
 			let xhr = new XMLHttpRequest();
 			xhr.open("GET", "https://FancyPupper.github.io/JSON/test.json");
 
 			xhr.onreadystatechange = function(){
 				console.log(this.readyState, this.status, this.statusText);
 			}
-
+			//procesar la petición
 			xhr.onload = function(){
-				
+				if(this.readyState === 4 && this.status === 200){
+					//cambiar texto
+				//	console.log(this.responseText);
+					let data = JSON.parse(this.responseText);
+					let emptyDiv = document.getElementById("loaded-info")
+
+				//	console.log(data);
+					let html = '';
+					let html = data.forEach(function(persona){
+						html += '<p>'
+						html += persona.nombre + ' ' + persona.apellido
+						html += '</p>'
+
+					});
+
+					emptyDiv.insertAdjacentHTML('beforeend', html);
+
+					//esconder el boton
+				} else {
+					alert("ERROR: " + this.status);
+				}
 			}
+			//enviar la petición
+			xhr.send();
 		}
 	</script>
 </head>
